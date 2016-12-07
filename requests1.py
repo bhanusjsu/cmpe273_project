@@ -20,9 +20,11 @@ app = Flask(__name__)
 #         addr = address+','+city+','+state+','+zip
 #         g = geocoder.google(addr)
 #         return g.latlng
+# Below is the function base route url where my request comes
 @app.route('/')
 def first_page():
     return render_template("Home2.html")
+#this is the url where my post request comes
 @app.route('/v1/locations', methods= ['POST'])
 def locationDetails():
     
@@ -33,6 +35,7 @@ def locationDetails():
     # db.create_all()
     
     # result = request.formest
+# accessing the form data from here 
     for x in request_data:
         address = request_data[x]['address']
         city = request_data[x]['city']
@@ -70,7 +73,7 @@ def locationDetails():
     response1.status_code =201
 
     return response1
-
+# This is the url where my prices api is called
 @app.route('/v1/prices', methods= ['POST'])
 def prices():
     try:
@@ -86,7 +89,7 @@ def prices():
         print "Reeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqqqqqqttttttttttttttttttdsts%%%%%%%%%%%%%%%%%%%%%%%"
         print reques_data
         r =[]
-
+# This is how my values from the request are iterated
         for key, value in reques_data.iteritems():
             s1 = re.search(r'src',key)
             s2 = re.search(r'dst',key)
@@ -132,7 +135,7 @@ def prices():
         loc = User(add1,city1,state1,zip1,latitude,longitude)
         db.session.add(loc)
         db.session.commit()
-
+# adding the desination values to the dictionary
         final_dict['Destination']={'address':add1,
         'state':state1,
         'zip': zip1,
