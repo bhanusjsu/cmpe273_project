@@ -12,7 +12,7 @@ import requests
 # waypoints_response = requests.get(url_waypoints)
 # print waypoints_response.json()['routes'][0]['waypoint_order']
 
-
+# This is the class for finding the eaaypoints
 # # def way_point():
 
 # #     url = 'https://maps.googleapis.com/maps/api/directions/json'
